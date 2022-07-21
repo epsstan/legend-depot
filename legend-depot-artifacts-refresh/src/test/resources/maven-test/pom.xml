@@ -36,17 +36,37 @@
 
   <dependencies>
      <dependency>
-       <groupId>org.finos.legend</groupId>
-       <artifactId>test-project</artifactId>
-       <version>master-SNAPSHOT</version>
-       <type>pom</type>
+        <groupId>org.finos.legend.showcase</groupId>
+        <artifactId>showcase2</artifactId>
+        <version>master-SNAPSHOT</version>
+        <type>pom</type>
     </dependency>
+     <dependency>
+        <groupId>org.finos.legend.showcase</groupId>
+        <artifactId>showcase2-entities</artifactId>
+        <version>master-SNAPSHOT</version>
+        <type>jar</type>
+    </dependency>
+
     <dependency>
-      <groupId>org.finos.legend</groupId>
-       <artifactId>test-project-entities</artifactId>
-       <version>master-SNAPSHOT</version>
-       <type>jar</type>
-    </dependency>
+              <groupId>org.finos.legend.showcase</groupId>
+                        <artifactId>showcase2-versioned-entities</artifactId>
+                                  <version>master-SNAPSHOT</version>
+                          </dependency>
+
+     <dependency>
+               <groupId>org.finos.legend.showcase</groupId>
+                         <artifactId>showcase2-service-execution</artifactId>
+                                   <version>master-SNAPSHOT</version>
+                           </dependency>
+
+     <dependency>
+               <groupId>org.finos.legend.showcase</groupId>
+                         <artifactId>showcase2-file-generation</artifactId>
+                                   <version>master-SNAPSHOT</version>
+                           </dependency>
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -58,19 +78,19 @@
 <repositories>
   <repository>
     <id>gitlab-maven</id>
-    <url>https://gitlab.com/api/v4/projects/29851090/packages/maven</url>
+    <url>https://gitlab.com/api/v4/projects/29500652/packages/maven</url>
   </repository>
 </repositories>
 
 <distributionManagement>
   <repository>
     <id>gitlab-maven</id>
-    <url>https://gitlab.com/api/v4/projects/29851090/packages/maven</url>
+    <url>https://gitlab.com/api/v4/projects/29500652/packages/maven</url>
   </repository>
 
   <snapshotRepository>
     <id>gitlab-maven</id>
-    <url>https://gitlab.com/api/v4/projects/29851090/packages/maven</url>
+    <url>https://gitlab.com/api/v4/projects/29500652/packages/maven</url>
   </snapshotRepository>
 </distributionManagement>
 
