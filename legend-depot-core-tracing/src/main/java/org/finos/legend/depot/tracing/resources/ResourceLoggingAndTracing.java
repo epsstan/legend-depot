@@ -24,6 +24,7 @@ public class ResourceLoggingAndTracing
     public static final String DELETE_PROJECT_ID = "delete projects by id";
     public static final String CREATE_EMPTY_PROJECT = "create empty project";
     public static final String GET_PROJECT_DEPENDENCIES = "get upstream project dependencies";
+    public static final String GET_PROJECT_DEPENDENCY_TREE = "get project dependency tree";
     public static final String GET_DEPENDANT_PROJECTS = "downstream projects";
     public static final String GET_REVISION_ENTITIES = "get revision entities";
     public static final String GET_REVISION_ENTITIES_AS_PMCD = "get revision entities as PMCD";
@@ -48,11 +49,11 @@ public class ResourceLoggingAndTracing
     public static final String GET_REVISION_FILE_GENERATION_ENTITIES = "get revision generation entities";
     public static final String GET_VERSION_FILE_GENERATION_ENTITIES = "get version generation entities";
     public static final String GET_REVISION_FILE_GENERATION = "get revision file generations";
-    public static final String GET_REVISION_FILE_GENERATION_BY_PATH = "get revision file generations by path";
+    public static final String GET_REVISION_FILE_GENERATION_BY_ELEMENT_PATH = "get revision file generations by element path";
     public static final String GET_REVISION_FILE_GENERATION_BY_FILEPATH = "get revision file generations by file";
     public static final String GET_VERSION_FILE_GENERATION = "get version file generations";
-    public static final String GET_VERSION_FILE_GENERATION_BY_PATH = "get version file generations by path";
-    public static final String GET_VERSION_FILE_GENERATION_BY_FILEPATH = "get revision file generations by file";
+    public static final String GET_VERSION_FILE_GENERATION_BY_ELEMENT_PATH = "get version file generations by element path";
+    public static final String GET_VERSION_FILE_GENERATION_BY_FILEPATH = "get version file generations by file";
     public static final String GET_ALL_EVENTS_IN_QUEUE = "get all queue events";
     public static final String FIND_PAST_EVENTS = "find past events";
     public static final String ENQUEUE_EVENT = "enqueue event";
@@ -71,6 +72,7 @@ public class ResourceLoggingAndTracing
     public static final String REPOSITORY_PROJECT_VERSIONS = "repo versions";
     public static final String GET_PROJECT_CACHE_MISMATCHES = "version mismatch";
     public static final String UPDATE_SCHEDULE = "update schedule";
+    public static final String FIX_PROJECT_CACHE_MISMATCHES = "fix version mismatch";
 
 
     private ResourceLoggingAndTracing()

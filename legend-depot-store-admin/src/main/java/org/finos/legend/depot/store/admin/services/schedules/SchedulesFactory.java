@@ -46,22 +46,33 @@ public final class SchedulesFactory
         this.manageSchedulesService = manageSchedulesService;
     }
 
-    public List<ScheduleInfo> printStats()
+    public List<ScheduleInfo> find()
     {
-        return manageSchedulesService.getAll();
+        return find(null,null);
     }
 
-    public void register(String name, LocalDateTime start, long interval, boolean parallelRun, Supplier<Object> function)
+    public List<ScheduleInfo> find(Boolean running, Boolean disabled)
+    {
+        return manageSchedulesService.find(running,disabled);
+    }
+
+    public void register(String name, LocalDateTime start, long intervalInMiliseconds, boolean parallelRun, Supplier<Object> function)
     {
         TimerTask task = createTask(name, function);
-        schedulesBuffer.put(name, Tuples.pair(task, new ScheduleInfo(name, interval, parallelRun)));
-        new Timer().scheduleAtFixedRate(task, java.sql.Date.from(start.atZone(ZoneId.systemDefault()).toInstant()), interval);
+        schedulesBuffer.put(name, Tuples.pair(task, new ScheduleInfo(name, intervalInMiliseconds, parallelRun)));
+        new Timer().scheduleAtFixedRate(task, java.sql.Date.from(start.atZone(ZoneId.systemDefault()).toInstant()), intervalInMiliseconds);
         Optional<ScheduleInfo> existingInfo = manageSchedulesService.get(name);
 
         ScheduleInfo info = existingInfo.orElseGet(() -> new ScheduleInfo(name));
         info.allowMultipleRuns = parallelRun;
-        info.frequency = interval;
+        info.frequency = intervalInMiliseconds;
         manageSchedulesService.createOrUpdate(info);
+    }
+
+    public void deRegister(String name)
+    {
+        this.schedulesBuffer.remove(name);
+        this.manageSchedulesService.delete(name);
     }
 
     public void run(String jobId)
@@ -81,7 +92,7 @@ public final class SchedulesFactory
 
     public void toggleDisableAll(boolean toggle)
     {
-        manageSchedulesService.toggleAll(toggle);
+        manageSchedulesService.toggleDisableAll(toggle);
     }
 
     private TimerTask createTask(String id, Supplier<Object> f)

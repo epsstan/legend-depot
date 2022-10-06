@@ -20,23 +20,23 @@ In order to start the `Depot Server` and `Depot Store Server`, follow the instru
 
 #### Setup Gitlab OAuth
 
-Follow the instructions [here](https://legend.finos.org/docs/installation/maven-install-guide) to set up `Gitlab authentication`
-Add following callback url to config: `http://127.0.0.1:8076/depot-store/callback`
+Follow the instructions [here](https://legend.finos.org/docs/getting-started/installation-guide#maven-install) to set up `Gitlab authentication`
+Add following callback url to config: `http://127.0.0.1:6201/depot-store/callback`
 
 > Certain store APIs required elevated permissions, add your `Gitlab handle` to `authorisedIdentities.json`
 
 #### Depot Store Server
 
 - Create a JSON configuration: _check out the [sample config](https://github.com/finos/legend-depot/blob/master/legend-depot-server/src/test/resources/sample-server-config.json)_
+- Configure your Artifacts Repository provider (artifactRepositoryProviderConfiguration)  _Check out the [instructions here](https://github.com/finos/legend-depot/blob/master/legend-depot-artifacts-refresh/README.md)_
 - Start an instance of `Mongo DB`: this is where your metadata will be stored: Add the `MongoDB URL` and `database name` to the `mongo` section of your config file
-- Configure `settings.xml`: this will let the server know from which `maven` repository to fetch and cache the published metadata artifacts. _Check out the [sample](https://github.com/finos/legend-depot/blob/master/legend-depot-store-server/src/test/resources/sample-server-config.json)_
 - Start the server:
 
 ```sh
 java -cp $SHADED_JAR_PATH org.finos.legend.depot.store.server.LegendDepotStoreServer server $CONFIG_DIR/config.json
 ```
 
-- Test by opening http://127.0.0.1:8076/depot-store/api/info or the `Swagger` [page](http://127.0.0.1:8076/depot-store/api/swagger)
+- Test by opening http://127.0.0.1:6201/depot-store/api/info or the `Swagger` [page](http://127.0.0.1:6201/depot-store/api/swagger)
 
 #### Depot Server
 
@@ -47,7 +47,7 @@ java -cp $SHADED_JAR_PATH org.finos.legend.depot.store.server.LegendDepotStoreSe
 java -cp $SHADED_JAR_PATH org.finos.legend.depot.server.LegendDepotServer server $CONFIG_DIR/config.json
 ```
 
-- Test by opening http://127.0.0.1:8075/depot/api/info or the `Swagger` [page](http://127.0.0.1:8075/depot/api/swagger)
+- Test by opening http://127.0.0.1:6200/depot/api/info or the `Swagger` [page](http://127.0.0.1:6200/depot/api/swagger)
 
 
 ### Register metadata projects with Depot Store Server

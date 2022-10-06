@@ -1,13 +1,14 @@
 {
   "applicationName": "Depot Store Manager API",
   "deployment": "DEV",
+  "sessionCookie": "LEGEND_DEPOT_STORE_JSESSIONID",
   "server": {
     "type": "simple",
     "applicationContextPath": "/",
     "adminContextPath": "/admin",
     "connector": {
       "type": "http",
-      "port": 8076,
+      "port": 6201,
       "maxRequestHeaderSize": "32KiB"
     },
     "gzip": {
@@ -95,8 +96,12 @@
     "CORS": 5
   },
   "artifactRepositoryProviderConfiguration": {
+
     "org.finos.legend.depot.artifacts.repository.maven.impl.MavenArtifactRepositoryConfiguration": {
-      "settingsLocation": "legend-depot-store-server/src/test/resources/sample-repository-settings.xml"
+      "settingsLocation": "legend-depot-store-server/src/test/resources/sample-repository-settings.xml",
+      "versionsUpdateIntervalInMillis": 7200000,
+      "latestUpdateIntervalInMillis": 3600000,
+      "fixVersionsMismatchIntervalInMillis": 360000
     }
   },
   "includeProjectPropertiesConfiguration": {
